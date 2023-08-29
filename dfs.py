@@ -1,85 +1,29 @@
+graph = {'A': set(['B', 'C']),
+         'B': set(['A', 'D', 'E']),
+         'C': set(['A', 'F']),
+         'D': set(['B']),
+         'E': set(['B', 'F']),
+         'F': set(['C', 'E'])}                                                                                                                                                                                                                                                                                                                                                                       
+def dfs(graph, start):
+    visited, stack = set(), [start]
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            stack.extend(graph[vertex] - visited)
+    return visited
+print(dfs(graph, 'A')) # {'E', 'D', 'F', 'A', 'C', 'B'}
 
-graph={'A':set(['B','C']),
-       'B':set(['A','D','E']),
-       'C':set(['A','F']),
-       'D':set(['B']),
-       'E':set(['B','F']),
-       'F':set(['C','E'])
-    }
-def bfs(graph,start):
-    visited = {start}
-    s =[start]
-    q =[]
-    q.append(start)
-    while len(s) !=0:
-        res =s.pop(0)
-        for i in graph[res]:
-            if i not in visited:
-                visited.add(i)
-                s.append(i)
-                q.append(i)
-    return q        
-                
-print(bfs(graph,'A'))
-
-def bfs_paths(graph,start,goal):
-    queue = [(start,[start])]
-    while queue:
-        (vertex,path)=queue.pop(0)
-        for next in graph[vertex]-set(path):
+def dfs_paths(graph, start, goal):
+    stack = [(start, [start])]
+    while stack:
+        (vertex, path) = stack.pop()
+        for next in graph[vertex] - set(path):
             if next == goal:
                 yield path + [next]
             else:
-                    queue.append((next,path+[next]))
-
-print(list(bfs_paths(graph,'A','F')))
-
-def shortest_path(graph,start,goal):
-    try:
-        return next(bfs_path(graph,start,goal))
-    except StopIteration:
-        return None
-    
-    
-                    
-
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                stack.append((next, path + [next]))
+l1 = list(dfs_paths(graph, 'A', 'E')) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
+print(l1)
+ 
 
