@@ -14,7 +14,7 @@ def bfs(graph, start):
             queue.extend(graph[vertex] - visited)
     return visited
 
-print(bfs(graph, 'C ')) # {'B', 'C', 'A', 'F', 'D', 'E'}
+print(bfs(graph, 'C')) # {'B', 'C', 'A', 'F', 'D', 'E'}
 
 
 def bfs_paths(graph, start, goal):
