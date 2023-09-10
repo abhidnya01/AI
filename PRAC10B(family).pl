@@ -20,8 +20,22 @@ haschild(X):- parent(X,_).
 sister(X,Y):- parent(Z,X),parent(Z,Y),female(X),X\==Y.
 brother(X,Y):-parent(Z,X),parent(Z,Y),male(X),X\==Y.
 
-
-%% | ?-  father(X, Y).
+%% OUTPUT
+%%| ?- father(X, Y).
 %% father(X, Y).
 %% X = tom
-%% Y = bob ? 
+%% Y = bob ? a
+%% X = tom
+%% Y = liz
+
+%% X = bob
+%% Y = ann
+
+%% X = bob
+%% Y = pat
+
+%%  X = bob
+%%  Y = peter
+
+%%  X = peter
+%%  Y = jim
