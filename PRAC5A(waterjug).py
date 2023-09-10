@@ -61,7 +61,7 @@ def get_all_states(state):
                      return True
             #empty b into c
             if(b+c<=z):
-                 if(get_all_states(a, 0, b+c ,ans.append(state))):
+                 if get_all_states((a, 0, b+c)):
                      return True
             else:
                  if(get_all_states((a,b-(z-c),z)) ):
